@@ -3,140 +3,250 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>عالم التخفيضات</title>
+  <title>عالم التخفيضات | تسوق بذكاء</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-blue: #2196f3;
+      --dark-blue: #0d47a1;
+      --light-blue: #64b5f6;
+      --white: #ffffff;
+      --text-color: #e0e0e0;
+      --link-bg: rgba(255, 255, 255, 0.15);
+      --link-hover-bg: rgba(255, 255, 255, 0.25);
+      --shadow-color: rgba(0, 0, 0, 0.4);
+    }
+
     body {
       margin: 0;
       font-family: 'Cairo', sans-serif;
-      background: linear-gradient(to bottom, #2196f3, #0d47a1);
-      color: white;
+      background: linear-gradient(to bottom, var(--primary-blue), var(--dark-blue));
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
+
     header {
       text-align: center;
-      padding: 30px 10px 10px;
+      padding: 40px 15px 20px;
       position: relative;
       animation: fadeInDown 1s ease-out;
     }
+
     header img {
-      width: 90px;
-      height: 90px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
-      margin-bottom: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      margin-bottom: 15px;
+      box-shadow: 0 5px 20px var(--shadow-color);
+      border: 3px solid var(--white);
+      object-fit: cover;
     }
+
     h1 {
       margin: 0;
-      font-size: 28px;
-      text-shadow: 1px 1px 3px black;
+      font-size: 32px;
+      text-shadow: 2px 2px 5px var(--shadow-color);
+      font-weight: 700;
     }
-    p {
-      font-size: 16px;
-      opacity: 0.9;
+
+    header p {
+      font-size: 18px;
+      opacity: 0.95;
+      margin-top: 10px;
     }
+
     .links {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      padding: 20px;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      padding: 30px 20px;
+      flex-grow: 1;
       animation: fadeInUp 1.2s ease-out;
     }
+
     .link-box {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 15px 20px;
-      border-radius: 15px;
+      background: var(--link-bg);
+      padding: 18px 25px;
+      border-radius: 18px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      width: 280px;
+      gap: 12px;
+      width: clamp(280px, 90%, 400px);
       text-decoration: none;
-      color: white;
-      transition: transform 0.3s;
-      backdrop-filter: blur(5px);
+      color: var(--white);
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      font-size: 18px;
+      font-weight: 600;
     }
+
     .link-box:hover {
-      transform: scale(1.03);
+      transform: translateY(-5px) scale(1.02);
+      background: var(--link-hover-bg);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
+
     .link-box img {
-      width: 30px;
-      height: 30px;
-      border-radius: 5px;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      object-fit: contain;
     }
+
     .payments {
-      background: rgba(0,0,0,0.2);
-      padding: 20px;
-      border-top: 1px solid #ffffff22;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 30px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      margin-top: 30px;
       animation: fadeInUp 1.5s ease-out;
     }
+
     .payments h2 {
       text-align: center;
-      margin-bottom: 15px;
+      margin-bottom: 25px;
+      font-size: 24px;
+      color: var(--light-blue);
+      text-shadow: 1px 1px 3px var(--shadow-color);
     }
+
     .payments ul {
       list-style: none;
       padding: 0;
-      font-size: 15px;
+      font-size: 16px;
+      max-width: 500px;
+      margin: 0 auto;
     }
+
     .payments li {
-      margin: 8px 0;
+      margin: 12px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
+
+    .payments li strong {
+      font-size: 17px;
+      color: var(--white);
+    }
+
+    .copy-btn {
+      background: var(--primary-blue);
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .copy-btn:hover {
+      background: var(--light-blue);
+      transform: scale(1.05);
+    }
+    
+    .copy-btn:active {
+      transform: scale(0.98);
+    }
+
+    .copy-btn img {
+      width: 16px;
+      height: 16px;
+      vertical-align: middle;
+      margin-left: 0;
+    }
+
     footer {
       text-align: center;
-      padding: 15px;
+      padding: 20px;
       font-size: 14px;
-      opacity: 0.7;
+      opacity: 0.8;
+      margin-top: 20px;
     }
 
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
+      from { opacity: 0; transform: translateY(-40px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (min-width: 768px) {
+      .links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+      .link-box {
+        width: 300px;
+      }
+      h1 {
+        font-size: 38px;
+      }
+      header p {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="https://www2.0zz0.com/2025/04/13/06/497268228.png" alt="شعار المتجر" />
+  <img src="img/logo.png" alt="شعار عالم التخفيضات" /> 
   <h1>✨ عالم التخفيضات ✨</h1>
-  <p>أسعار مناسبة وعروض منافسة، تسوق بذكاء!</p>
+  <p>وجهتك الأولى لأفضل الأسعار والعروض الحصرية، تسوق بذكاء ووفر أكثر!</p>
 </header>
 
 <section class="links">
 
   <a class="link-box" href="https://chat.whatsapp.com/FBgdnRKscxdFZe6UnO8hVz" target="_blank">
-    <img src="https://img.icons8.com/color/48/whatsapp--v1.png"/>
+    <img src="img/wa.png" alt="WhatsApp Group"/>
     مجموعة واتساب
   </a>
 
   <a class="link-box" href="https://wa.me/c/967733228635" target="_blank">
-    <img src="https://img.icons8.com/fluency/48/shopping-cart.png"/>
+    <img src="img/cat.png" alt="Shopping Catalog"/>
     كتالوج التسوق
   </a>
 
+  <a class="link-box" href="https://wa.me/967733228635" target="_blank">
+    <img src="img/chat.png" alt="Personal WhatsApp"/>
+    تواصل شخصي عبر واتساب
+  </a>
+
   <a class="link-box" href="https://www.facebook.com/profile.php?id=61571492677310" target="_blank">
-    <img src="https://img.icons8.com/color/48/facebook-new.png"/>
+    <img src="img/fb.png" alt="Facebook Page"/>
     تابعنا على فيسبوك
   </a>
 
   <a class="link-box" href="https://www.tiktok.com/@user733228635" target="_blank">
-    <img src="https://img.icons8.com/color/48/tiktok--v1.png"/>
+    <img src="img/tt.png" alt="TikTok Profile"/>
     تيك توك
   </a>
 
   <a class="link-box" href="https://yemenmazad.com/user/733228635" target="_blank">
-    <img src="https://www2.0zz0.com/2025/04/13/06/705994999.png"/>
+    <img src="img/ym.png" alt="Yemen Mazad"/>
     يمن مزاد
-  </a>
-
-  <a class="link-box" href="https://wa.me/967733228635" target="_blank">
-    <img src="https://img.icons8.com/ios-filled/50/user.png"/>
-    تواصل شخصي عبر واتساب
   </a>
 
 </section>
@@ -144,19 +254,78 @@
 <section class="payments">
   <h2>💳 وسائل الدفع المتوفرة</h2>
   <ul>
-    <li>💳 كريمي (يمني): <strong>3147095828</strong></li>
-    <li>💳 كريمي (سعودي): <strong>3147101316</strong></li>
-    <li>💻 نقطة حاسب: <strong>1378778</strong></li>
-    <li>📱 موبايل موني: <strong>733228635</strong></li>
-    <li>💸 أم فلوس: <strong>10922121</strong></li>
-    <li>🏦 حساب ون كاش: <strong>116630904</strong></li>
-    <li>📤 حوالة باسم: <strong>محمد علي أحمد عمر حيدره</strong> - <strong>733228635</strong></li>
+    <li>
+      <span>💳 كريمي (يمني): <strong>3147095828</strong></span>
+      <button class="copy-btn" onclick="copyToClipboard('3147095828')">
+        <img src="img/copy.png" alt="copy icon"/>
+        نسخ
+      </button>
+    </li>
+    <li>
+      <span>💳 كريمي (سعودي): <strong>3147101316</strong></span>
+      <button class="copy-btn" onclick="copyToClipboard('3147101316')">
+        <img src="img/copy.png" alt="copy icon"/>
+        نسخ
+      </button>
+    </li>
+    <li>
+      <span>💻 نقطة حاسب: <strong>1378778</strong></span>
+      <button class="copy-btn" onclick="copyToClipboard('1378778')">
+        <img src="img/copy.png" alt="copy icon"/>
+        نسخ
+      </button>
+    </li>
+    <li>
+      <span>📱 موبايل موني: <strong>733228635</strong></span>
+      <button class="copy-btn" onclick="copyToClipboard('733228635')">
+        <img src="img/copy.png" alt="copy icon"/>
+        نسخ
+      </button>
+    </li>
+    <li>
+      <span>💸 أم فلوس: <strong>10922121</strong></span>
+      <button class="copy-btn" onclick="copyToClipboard('10922121')">
+        <img src="img/copy.png" alt="copy icon"/>
+        نسخ
+      </button>
+    </li>
+    <li>
+      <span>🏦 حساب ون كاش: <strong>116630904</strong></span>
+      <button class="copy-btn" onclick="copyToClipboard('116630904')">
+        <img src="img/copy.png" alt="copy icon"/>
+        نسخ
+      </button>
+    </li>
+    <li>
+      <span>📤 حوالة باسم: <strong>محمد علي أحمد عمر حيدره</strong> - <strong>733228635</strong></span>
+      <button class="copy-btn" onclick="copyToClipboard('733228635')">
+        <img src="img/copy.png" alt="copy icon"/>
+        نسخ الرقم
+      </button>
+    </li>
   </ul>
 </section>
 
 <footer>
   جميع الحقوق محفوظة &copy; عالم التخفيضات 2025
 </footer>
+
+<script>
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('تم نسخ الرقم: ' + text);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      alert('تم نسخ الرقم (طريقة بديلة): ' + text);
+    });
+  }
+</script>
 
 </body>
 </html>
